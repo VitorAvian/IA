@@ -26,6 +26,10 @@
 		4EC3A79623579D7300F81DAA /* TrabIA */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TrabIA; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EC3A79923579D7300F81DAA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		4EC3A7A02357A4AC00F81DAA /* 1.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = 1.in; sourceTree = "<group>"; };
+		4EC3A7A12357E1D800F81DAA /* 2.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2.in; sourceTree = "<group>"; };
+		4EC3A7A22358CAE000F81DAA /* 3.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = 3.in; sourceTree = "<group>"; };
+		4EC3A7A32358CC3700F81DAA /* 4.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = 4.in; sourceTree = "<group>"; };
+		4EC3A7A42358CD4D00F81DAA /* 5.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = 5.in; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,10 @@
 			children = (
 				4EC3A79923579D7300F81DAA /* main.cpp */,
 				4EC3A7A02357A4AC00F81DAA /* 1.in */,
+				4EC3A7A12357E1D800F81DAA /* 2.in */,
+				4EC3A7A22358CAE000F81DAA /* 3.in */,
+				4EC3A7A32358CC3700F81DAA /* 4.in */,
+				4EC3A7A42358CD4D00F81DAA /* 5.in */,
 			);
 			path = TrabIA;
 			sourceTree = "<group>";

@@ -2,6 +2,7 @@
 #include <stack>
 #include <vector>
 #include <math.h>
+#include <queue>
 
 using namespace std;
 
@@ -15,6 +16,7 @@ private:
 public:
 	char **lab;
 	stack<pair<int, int> > s;
+	char **visitados;
 	
 	void setIni(int i, int j){
 		ini.first = i;
@@ -81,6 +83,20 @@ public:
 		}
 	}
 	
+	void iniciarVisitados(){
+		visitados = new char*[linha];
+		for(int i = 0; i<linha; i++){
+			visitados[i] = new char[coluna];
+		}
+		#pragma omp parallel for
+		for(int i = 0; i<linha; i++){
+		#pragma omp parallel for
+			for(int j = 0; j<coluna; j++){
+				visitados[i][j] = lab[i][j];
+			}
+		}
+	}
+	
 	void dfsReal(pair<int, int> atual, char **visitados, float custo){
 		visitados[atual.first][atual.second] = '-';
 		
@@ -95,7 +111,7 @@ public:
 				aux1.push_back(aux.top());
 				aux.pop();
 			}
-			for(int i = aux1.size()-1; i >= 0; i--){
+			for(int i = (int)aux1.size()-1; i >= 0; i--){
 				cout<<"("<<aux1[i].first<<", "<<aux1[i].second;
 				if(i != 0)
 					cout<<"), ";
@@ -157,25 +173,65 @@ public:
 	}
 	
 	void dfs(){
-		char **visitados;
-		visitados = new char*[linha];
-		for(int i = 0; i<linha; i++){
-			visitados[i] = new char[coluna];
-		}
-#pragma omp parallel for
-		for(int i = 0; i<linha; i++){
-#pragma omp parallel for
-			for(int j = 0; j<coluna; j++){
-				visitados[i][j] = lab[i][j];
-			}
-		}
+		iniciarVisitados();
 		custo = 0;
 		dfsReal(ini, visitados, custo);
 		
 	}
 	
 	void bfs(){
-		
+		iniciarVisitados();
+		queue<pair<int, int> > q;
+		visitados[ini.first][ini.second] = '-';
+		q.push(ini);
+		pair<int, int> atual;
+		cout<<"[";
+		while(!q.empty()){
+			atual = q.front();
+			cout<<"("<<atual.first<<", "<<atual.second<<")";
+			q.pop();
+			
+			if(atual.first - 1 >= 0 and visitados[atual.first-1][atual.second] != '-'){
+				visitados[atual.first-1][atual.second] = '-';
+				q.push(make_pair(atual.first-1, atual.second));
+			}
+			//NL
+			if(atual.first - 1 >= 0 and atual.second + 1 < coluna and visitados[atual.first-1][atual.second + 1] != '-'){
+				visitados[atual.first-1][atual.second+1] = '-';
+				q.push(make_pair(atual.first-1, atual.second+1));
+			}
+			//L
+			if(atual.second + 1 < coluna and visitados[atual.first][atual.second + 1] != '-'){
+				visitados[atual.first][atual.second+1] = '-';
+				q.push(make_pair(atual.first, atual.second+1));
+			}
+			//SL
+			if(atual.first + 1 < linha and atual.second + 1 < coluna and visitados[atual.first+1][atual.second+1] != '-'){
+				visitados[atual.first+1][atual.second+1] = '-';
+				q.push(make_pair(atual.first+1, atual.second+1));
+			}
+			//S
+			if(atual.first + 1 < linha and visitados[atual.first+1][atual.second] != '-'){
+				visitados[atual.first+1][atual.second] = '-';
+				q.push(make_pair(atual.first+1, atual.second));
+			}
+			//SO
+			if(atual.first + 1 < linha and atual.second - 1 >= 0 and visitados[atual.first+1][atual.second-1] != '-'){
+				visitados[atual.first+1][atual.second-1] = '-';
+				q.push(make_pair(atual.first+1, atual.second-1));
+			}
+			//O
+			if(atual.second - 1 >= 0 and visitados[atual.first][atual.second-1] != '-'){
+				visitados[atual.first][atual.second-1] = '-';
+				q.push(make_pair(atual.first, atual.second-1));
+			}
+			//NO
+			if(atual.first - 1 >= 0 and atual.second - 1 >= 0 and visitados[atual.first-1][atual.second-1] != '-'){
+				visitados[atual.first-1][atual.second-1] = '-';
+				q.push(make_pair(atual.first-1, atual.second-1));
+			}
+		}
+		cout<<"]"<<endl;
 	}
 	
 	void bff(){
@@ -197,9 +253,9 @@ int main(int argc, const char * argv[]) {
 	l.setLab();
 	//l.printLab();
 	
-	l.dfs();
+	//l.dfs();
 	
-//	l.bfs();
+	l.bfs();
 //	l.bff();
 //	l.bA();
 	
