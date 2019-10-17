@@ -15,7 +15,6 @@ private:
 	float custo;
 public:
 	char **lab;
-	stack<pair<int, int> > s;
 	char **visitados;
 	
 	void setIni(int i, int j){
@@ -88,9 +87,7 @@ public:
 		for(int i = 0; i<linha; i++){
 			visitados[i] = new char[coluna];
 		}
-		#pragma omp parallel for
 		for(int i = 0; i<linha; i++){
-		#pragma omp parallel for
 			for(int j = 0; j<coluna; j++){
 				visitados[i][j] = lab[i][j];
 			}
@@ -100,6 +97,7 @@ public:
 	void dfsReal(pair<int, int> atual, char **visitados, float custo){
 		visitados[atual.first][atual.second] = '-';
 		
+		stack<pair<int, int> > s;
 		if(atual == fim){
 			s.push(atual);
 			vector<pair<int, int > > aux1;
@@ -185,51 +183,78 @@ public:
 		visitados[ini.first][ini.second] = '-';
 		q.push(ini);
 		pair<int, int> atual;
-		cout<<"[";
+		pair<int, int> caminho[linha][coluna];
+		caminho[ini.first][ini.second] = make_pair(-1, -1);
 		while(!q.empty()){
 			atual = q.front();
-			cout<<"("<<atual.first<<", "<<atual.second<<")";
 			q.pop();
-			
+			if(atual == fim)
+				break;
+			//N
 			if(atual.first - 1 >= 0 and visitados[atual.first-1][atual.second] != '-'){
 				visitados[atual.first-1][atual.second] = '-';
+				caminho[atual.first-1][atual.second] = atual;
 				q.push(make_pair(atual.first-1, atual.second));
-			}
-			//NL
-			if(atual.first - 1 >= 0 and atual.second + 1 < coluna and visitados[atual.first-1][atual.second + 1] != '-'){
-				visitados[atual.first-1][atual.second+1] = '-';
-				q.push(make_pair(atual.first-1, atual.second+1));
 			}
 			//L
 			if(atual.second + 1 < coluna and visitados[atual.first][atual.second + 1] != '-'){
 				visitados[atual.first][atual.second+1] = '-';
+				caminho[atual.first][atual.second+1] = atual;
 				q.push(make_pair(atual.first, atual.second+1));
-			}
-			//SL
-			if(atual.first + 1 < linha and atual.second + 1 < coluna and visitados[atual.first+1][atual.second+1] != '-'){
-				visitados[atual.first+1][atual.second+1] = '-';
-				q.push(make_pair(atual.first+1, atual.second+1));
 			}
 			//S
 			if(atual.first + 1 < linha and visitados[atual.first+1][atual.second] != '-'){
 				visitados[atual.first+1][atual.second] = '-';
+				caminho[atual.first+1][atual.second] = atual;
 				q.push(make_pair(atual.first+1, atual.second));
-			}
-			//SO
-			if(atual.first + 1 < linha and atual.second - 1 >= 0 and visitados[atual.first+1][atual.second-1] != '-'){
-				visitados[atual.first+1][atual.second-1] = '-';
-				q.push(make_pair(atual.first+1, atual.second-1));
 			}
 			//O
 			if(atual.second - 1 >= 0 and visitados[atual.first][atual.second-1] != '-'){
 				visitados[atual.first][atual.second-1] = '-';
+				caminho[atual.first][atual.second-1] = atual;
 				q.push(make_pair(atual.first, atual.second-1));
+			}
+			//NL
+			if(atual.first - 1 >= 0 and atual.second + 1 < coluna and visitados[atual.first-1][atual.second + 1] != '-'){
+				visitados[atual.first-1][atual.second+1] = '-';
+				caminho[atual.first-1][atual.second+1] = atual;
+				q.push(make_pair(atual.first-1, atual.second+1));
+			}
+			//SL
+			if(atual.first + 1 < linha and atual.second + 1 < coluna and visitados[atual.first+1][atual.second+1] != '-'){
+				visitados[atual.first+1][atual.second+1] = '-';
+				caminho[atual.first+1][atual.second+1] = atual;
+				q.push(make_pair(atual.first+1, atual.second+1));
+			}
+			//SO
+			if(atual.first + 1 < linha and atual.second - 1 >= 0 and visitados[atual.first+1][atual.second-1] != '-'){
+				visitados[atual.first+1][atual.second-1] = '-';
+				caminho[atual.first+1][atual.second-1] = atual;
+				q.push(make_pair(atual.first+1, atual.second-1));
 			}
 			//NO
 			if(atual.first - 1 >= 0 and atual.second - 1 >= 0 and visitados[atual.first-1][atual.second-1] != '-'){
 				visitados[atual.first-1][atual.second-1] = '-';
+				caminho[atual.first-1][atual.second-1] = atual;
 				q.push(make_pair(atual.first-1, atual.second-1));
 			}
+		}
+		stack<pair<int, int> > s;
+		pair<int, int> aux;
+		s.push(fim);
+		aux = caminho[fim.first][fim.second];
+		while(aux.first != -1 and aux.second != -1){
+			s.push(aux);
+			aux = caminho[aux.first][aux.second];
+		}
+		cout<<"[";
+		while(!s.empty()){
+			cout<<"("<<s.top().first<<", "<<s.top().second;
+			if(s.size() > 1)
+				cout<<"), ";
+			else
+				cout<<")";
+			s.pop();
 		}
 		cout<<"]"<<endl;
 	}
