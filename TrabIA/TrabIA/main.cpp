@@ -94,18 +94,25 @@ public:
 		}
 	}
 	
+	void deletarVisitados(){
+		for(int i = 0; i<linha; i++){
+			delete[] visitados[i];
+		}
+		delete[] visitados;
+	}
+	
+	stack<pair<int, int> > s;
 	void dfsReal(pair<int, int> atual, char **visitados, float custo){
 		visitados[atual.first][atual.second] = '-';
 		
-		stack<pair<int, int> > s;
 		if(atual == fim){
 			s.push(atual);
 			vector<pair<int, int > > aux1;
 			stack<pair<int, int> > aux;
 			aux = s;
+			cout<<"Caminho encontrado = ";
 			cout<<"[";
 			while(!aux.empty()){
-				//cout<<"("<<aux.top().first<<", "<<aux.top().second<<"), ";
 				aux1.push_back(aux.top());
 				aux.pop();
 			}
@@ -116,7 +123,8 @@ public:
 				else
 					cout<<")";
 			}
-			cout<<"]"<<custo<<endl;
+			cout<<"]"<<endl;
+			cout<<"Custo = "<<custo<<endl;
 		}
 		else{
 			//N
@@ -171,13 +179,15 @@ public:
 	}
 	
 	void dfs(){
-		iniciarVisitados();
 		custo = 0;
+		iniciarVisitados();
+		cout<<"DFS:"<<endl;
 		dfsReal(ini, visitados, custo);
-		
+		deletarVisitados();
 	}
 	
 	void bfs(){
+		cout<<"BFS:"<<endl;
 		iniciarVisitados();
 		queue<pair<int, int> > q;
 		visitados[ini.first][ini.second] = '-';
@@ -241,12 +251,38 @@ public:
 		}
 		stack<pair<int, int> > s;
 		pair<int, int> aux;
+		custo = 0;
+		int dif1;
+		int dif2;
 		s.push(fim);
+		/*for(int i = 0; i<linha; i++){
+			for(int j= 0; j<coluna;j++){
+				cout<<caminho[i][j].first<<" "<<caminho[i][j].second<<"|";
+			}
+			cout<<endl;
+		}*/
+		dif1 = fim.first - caminho[fim.first][fim.second].first;
+		dif2 = fim.second - caminho[fim.first][fim.second].second;
+		if(dif1 == 0 || dif2 == 0)
+			custo += 1;
+		else
+			custo += sqrt(2);
 		aux = caminho[fim.first][fim.second];
-		while(aux.first != -1 and aux.second != -1){
+		while(caminho[aux.first][aux.second].first != -1 and caminho[aux.first][aux.second].second != -1){
 			s.push(aux);
+			
+			dif1 = aux.first - caminho[aux.first][aux.second].first;
+			dif2 = aux.second - caminho[aux.first][aux.second].second;
+			
+			if(dif1 == 0 || dif2 == 0)
+				custo += 1;
+			else
+				custo += sqrt(2);
+			
 			aux = caminho[aux.first][aux.second];
 		}
+		s.push(ini);
+		cout<<"Caminho encontrado = ";
 		cout<<"[";
 		while(!s.empty()){
 			cout<<"("<<s.top().first<<", "<<s.top().second;
@@ -257,6 +293,8 @@ public:
 			s.pop();
 		}
 		cout<<"]"<<endl;
+		cout<<"Custo = "<<custo<<endl;
+		deletarVisitados();
 	}
 	
 	void bff(){
@@ -278,9 +316,11 @@ int main(int argc, const char * argv[]) {
 	l.setLab();
 	//l.printLab();
 	
-	//l.dfs();
-	
+	cout<<"------------------------------------------------------------------------------------------"<<endl;
+	l.dfs();
+	cout<<"------------------------------------------------------------------------------------------"<<endl;
 	l.bfs();
+	cout<<"------------------------------------------------------------------------------------------"<<endl;
 //	l.bff();
 //	l.bA();
 	
