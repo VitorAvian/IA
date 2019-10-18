@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E83DDBA2359569500C65597 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E83DDB92359569500C65597 /* main.cpp */; };
+		4E83DDBA2359569500C65597 /* gerador.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E83DDB92359569500C65597 /* gerador.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		4E83DDB62359569500C65597 /* labirinto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = labirinto; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E83DDB92359569500C65597 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		4E83DDB92359569500C65597 /* gerador.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gerador.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 		4E83DDB82359569500C65597 /* labirinto */ = {
 			isa = PBXGroup;
 			children = (
-				4E83DDB92359569500C65597 /* main.cpp */,
+				4E83DDB92359569500C65597 /* gerador.cpp */,
 			);
 			path = labirinto;
 			sourceTree = "<group>";
@@ -119,7 +119,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E83DDBA2359569500C65597 /* main.cpp in Sources */,
+				4E83DDBA2359569500C65597 /* gerador.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

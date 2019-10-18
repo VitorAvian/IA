@@ -44,6 +44,7 @@
 		4E4B04BC2359A11600F497A9 /* 23.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 23.in; sourceTree = "<group>"; };
 		4E4B04BD2359A11600F497A9 /* 24.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 24.in; sourceTree = "<group>"; };
 		4E4B04BE2359A11600F497A9 /* 28.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 28.in; sourceTree = "<group>"; };
+		4E4B04C12359C80000F497A9 /* 31.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 31.in; sourceTree = "<group>"; };
 		4EC3A79623579D7300F81DAA /* TrabIA */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TrabIA; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EC3A79923579D7300F81DAA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		4EC3A7A02357A4AC00F81DAA /* 1.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = 1.in; sourceTree = "<group>"; };
@@ -110,6 +111,7 @@
 				4E4B04BD2359A11600F497A9 /* 24.in */,
 				4E4B04BE2359A11600F497A9 /* 28.in */,
 				4E4B04B92359A11500F497A9 /* 30.in */,
+				4E4B04C12359C80000F497A9 /* 31.in */,
 			);
 			path = TrabIA;
 			sourceTree = "<group>";
