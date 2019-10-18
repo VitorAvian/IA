@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4EC3A79A23579D7300F81DAA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3A79923579D7300F81DAA /* main.cpp */; };
+		4E83DDBA2359569500C65597 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E83DDB92359569500C65597 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4EC3A79423579D7300F81DAA /* CopyFiles */ = {
+		4E83DDB42359569500C65597 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,19 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4E1AA12923596F4C003D4317 /* 6.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = 6.in; sourceTree = "<group>"; };
-		4E1AA12A2359715E003D4317 /* 7.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = 7.in; sourceTree = "<group>"; };
-		4EC3A79623579D7300F81DAA /* TrabIA */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TrabIA; sourceTree = BUILT_PRODUCTS_DIR; };
-		4EC3A79923579D7300F81DAA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		4EC3A7A02357A4AC00F81DAA /* 1.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = 1.in; sourceTree = "<group>"; };
-		4EC3A7A12357E1D800F81DAA /* 2.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2.in; sourceTree = "<group>"; };
-		4EC3A7A22358CAE000F81DAA /* 3.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = 3.in; sourceTree = "<group>"; };
-		4EC3A7A32358CC3700F81DAA /* 4.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = 4.in; sourceTree = "<group>"; };
-		4EC3A7A42358CD4D00F81DAA /* 5.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = 5.in; sourceTree = "<group>"; };
+		4E83DDB62359569500C65597 /* labirinto */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = labirinto; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E83DDB92359569500C65597 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4EC3A79323579D7300F81DAA /* Frameworks */ = {
+		4E83DDB32359569500C65597 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,72 +38,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4EC3A78D23579D7300F81DAA = {
+		4E83DDAD2359569500C65597 = {
 			isa = PBXGroup;
 			children = (
-				4EC3A79823579D7300F81DAA /* TrabIA */,
-				4EC3A79723579D7300F81DAA /* Products */,
+				4E83DDB82359569500C65597 /* labirinto */,
+				4E83DDB72359569500C65597 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		4EC3A79723579D7300F81DAA /* Products */ = {
+		4E83DDB72359569500C65597 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4EC3A79623579D7300F81DAA /* TrabIA */,
+				4E83DDB62359569500C65597 /* labirinto */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4EC3A79823579D7300F81DAA /* TrabIA */ = {
+		4E83DDB82359569500C65597 /* labirinto */ = {
 			isa = PBXGroup;
 			children = (
-				4EC3A79923579D7300F81DAA /* main.cpp */,
-				4EC3A7A02357A4AC00F81DAA /* 1.in */,
-				4EC3A7A12357E1D800F81DAA /* 2.in */,
-				4EC3A7A22358CAE000F81DAA /* 3.in */,
-				4EC3A7A32358CC3700F81DAA /* 4.in */,
-				4EC3A7A42358CD4D00F81DAA /* 5.in */,
-				4E1AA12923596F4C003D4317 /* 6.in */,
-				4E1AA12A2359715E003D4317 /* 7.in */,
+				4E83DDB92359569500C65597 /* main.cpp */,
 			);
-			path = TrabIA;
+			path = labirinto;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4EC3A79523579D7300F81DAA /* TrabIA */ = {
+		4E83DDB52359569500C65597 /* labirinto */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4EC3A79D23579D7300F81DAA /* Build configuration list for PBXNativeTarget "TrabIA" */;
+			buildConfigurationList = 4E83DDBD2359569500C65597 /* Build configuration list for PBXNativeTarget "labirinto" */;
 			buildPhases = (
-				4EC3A79223579D7300F81DAA /* Sources */,
-				4EC3A79323579D7300F81DAA /* Frameworks */,
-				4EC3A79423579D7300F81DAA /* CopyFiles */,
+				4E83DDB22359569500C65597 /* Sources */,
+				4E83DDB32359569500C65597 /* Frameworks */,
+				4E83DDB42359569500C65597 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = TrabIA;
-			productName = TrabIA;
-			productReference = 4EC3A79623579D7300F81DAA /* TrabIA */;
+			name = labirinto;
+			productName = labirinto;
+			productReference = 4E83DDB62359569500C65597 /* labirinto */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		4EC3A78E23579D7300F81DAA /* Project object */ = {
+		4E83DDAE2359569500C65597 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Vitor Avian";
 				TargetAttributes = {
-					4EC3A79523579D7300F81DAA = {
+					4E83DDB52359569500C65597 = {
 						CreatedOnToolsVersion = 11.1;
 					};
 				};
 			};
-			buildConfigurationList = 4EC3A79123579D7300F81DAA /* Build configuration list for PBXProject "TrabIA" */;
+			buildConfigurationList = 4E83DDB12359569500C65597 /* Build configuration list for PBXProject "labirinto" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,29 +104,29 @@
 				en,
 				Base,
 			);
-			mainGroup = 4EC3A78D23579D7300F81DAA;
-			productRefGroup = 4EC3A79723579D7300F81DAA /* Products */;
+			mainGroup = 4E83DDAD2359569500C65597;
+			productRefGroup = 4E83DDB72359569500C65597 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4EC3A79523579D7300F81DAA /* TrabIA */,
+				4E83DDB52359569500C65597 /* labirinto */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4EC3A79223579D7300F81DAA /* Sources */ = {
+		4E83DDB22359569500C65597 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EC3A79A23579D7300F81DAA /* main.cpp in Sources */,
+				4E83DDBA2359569500C65597 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		4EC3A79B23579D7300F81DAA /* Debug */ = {
+		4E83DDBB2359569500C65597 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -198,7 +184,7 @@
 			};
 			name = Debug;
 		};
-		4EC3A79C23579D7300F81DAA /* Release */ = {
+		4E83DDBC2359569500C65597 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -249,7 +235,7 @@
 			};
 			name = Release;
 		};
-		4EC3A79E23579D7300F81DAA /* Debug */ = {
+		4E83DDBE2359569500C65597 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -259,7 +245,7 @@
 			};
 			name = Debug;
 		};
-		4EC3A79F23579D7300F81DAA /* Release */ = {
+		4E83DDBF2359569500C65597 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -272,25 +258,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4EC3A79123579D7300F81DAA /* Build configuration list for PBXProject "TrabIA" */ = {
+		4E83DDB12359569500C65597 /* Build configuration list for PBXProject "labirinto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4EC3A79B23579D7300F81DAA /* Debug */,
-				4EC3A79C23579D7300F81DAA /* Release */,
+				4E83DDBB2359569500C65597 /* Debug */,
+				4E83DDBC2359569500C65597 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4EC3A79D23579D7300F81DAA /* Build configuration list for PBXNativeTarget "TrabIA" */ = {
+		4E83DDBD2359569500C65597 /* Build configuration list for PBXNativeTarget "labirinto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4EC3A79E23579D7300F81DAA /* Debug */,
-				4EC3A79F23579D7300F81DAA /* Release */,
+				4E83DDBE2359569500C65597 /* Debug */,
+				4E83DDBF2359569500C65597 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 4EC3A78E23579D7300F81DAA /* Project object */;
+	rootObject = 4E83DDAE2359569500C65597 /* Project object */;
 }

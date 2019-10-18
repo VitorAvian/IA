@@ -55,6 +55,7 @@ public:
 	
 	void iniciaLab(){
 		setLinCol();
+		//cout<<linha<<" "<<coluna;
 		lab = new char*[linha];
 		for(int i = 0; i<linha; i++){
 			lab[i] = new char[coluna];
@@ -121,6 +122,13 @@ public:
 			cout<<"=";
 		}
 		cout<<endl<<endl;
+	}
+	
+	void deletarVisualizar(){
+		for(int i = 0; i<linha; i++){
+			delete[] visual[i];
+		}
+		delete[] visual;
 	}
 	
 	void printLab(){
@@ -472,6 +480,7 @@ int main(int argc, const char * argv[]) {
 	
 	cout<<"---------------------------------------------------------------------------------------------------"<<endl;
 	l.copiarLab();
+	//l.printLab();
 	antes = clock();
 	l.dfs();
 	depois = clock();
