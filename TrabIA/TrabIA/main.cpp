@@ -94,7 +94,7 @@ public:
 				if(lab[i][j] != '*' and lab[i][j] != '-')
 					visual[i][j] = lab[i][j];
 				else if(lab[i][j] == '*')
-					visual[i][j] = '.';
+					visual[i][j] = ' ';
 				else if(lab[i][j] == '-')
 					visual[i][j] = '=';
 			}
@@ -104,6 +104,7 @@ public:
 	void visualizar(){
 		cout<<endl;
 		cout<<"      ";
+		cout<<"\x1b[34m";
 		for(int i = 0; i<coluna*2+2; i++){
 			cout<<"=";
 		}
@@ -113,15 +114,30 @@ public:
 		for(int i = 0; i<linha; i++){
 			cout<<"      |";
 			for(int j = 0; j<coluna; j++){
-				cout<<visual[i][j]<<" ";
+				if(visual[i][j] == '0'){
+					cout<<"\x1b[33m";
+					cout<<visual[i][j]<<" ";
+				}
+				else if(visual[i][j] == '#'){
+					cout<<"\x1b[32m";
+					cout<<visual[i][j]<<" ";
+				}
+				else if(visual[i][j] == '$'){
+					cout<<"\x1b[31m";
+					cout<<visual[i][j]<<" ";
+				}
+				else{
+					cout<<"\x1b[0m";
+					cout<<visual[i][j]<<" ";
+				}
 			}
-			cout<<"|"<<endl;
+			cout<<"\x1b[34m"<<"|"<<endl;
 		}
 		cout<<"      ";
 		for(int i = 0; i<coluna*2+2; i++){
-			cout<<"=";
+			cout<<"\x1b[34m"<<"=";
 		}
-		cout<<endl<<endl;
+		cout<<"\x1b[0m"<<endl<<endl;
 	}
 	
 	void deletarVisualizar(){
@@ -355,11 +371,11 @@ public:
 	void bff(){
 		cout<<"BFF:"<<endl;
 		iniciarVisitados();
-		priority_queue<pair<double, pair<int, int>> , vector<pair<double, pair<int, int>>> , greater<pair<double, pair<int, int>>>> pq;
+		priority_queue<pair<double, pair<int, int> > , vector<pair<double, pair<int, int> > > , greater<pair<double, pair<int, int> > > > pq;
 		visitados[ini.first][ini.second] = '-';
 		pq.push(make_pair(0, ini));
-		pair<double, pair<int, int>> atual;
-		pair<double, pair<int,int>> caminho[linha][coluna];
+		pair<double, pair<int, int> > atual;
+		pair<double, pair<int,int> > caminho[linha][coluna];
 		caminho[ini.first][ini.second] = make_pair(0, make_pair(-1, -1));
 		while(!pq.empty()){
 			atual = pq.top();
@@ -424,7 +440,7 @@ public:
 			}
 		}
 		stack<pair<double, pair<int, int> > > s;
-		pair<double, pair<int, int>> aux;
+		pair<double, pair<int, int> > aux;
 		custo = 0;
 		int dif1;
 		int dif2;

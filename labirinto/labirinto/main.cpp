@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <stack>
 #include <queue>
 
@@ -69,14 +70,27 @@ public:
 		lab[ini.first][ini.second] = '#';
 		lab[fim.first][fim.second] = '$';
 		visitados[ini.first][ini.second] = '-';
-		//visitados[fim.first][fim.second] = '-';
-		
-		//visitados[0][0] = '-';
 	}
 	
 	void pontos(){
 		cout<<ini.first<<" "<<ini.second<<endl;
 		cout<<fim.first<<" "<<fim.second<<endl;
+	}
+	
+	void imprimirIn(){
+		ofstream myfile;
+		myfile.open("1.in");
+		myfile<<linha<<" "<<coluna<<endl;
+		lab[ini.first][ini.second] = '#';
+		lab[fim.first][fim.second] = '$';
+		for(int i = 0; i<linha; i++){
+			for(int j = 0; j<coluna; j++){
+				myfile<<lab[i][j];
+			}
+			myfile<<endl;
+		}
+		myfile<<endl;
+		myfile.close();
 	}
 	
 	void imprimirLab(){
@@ -133,13 +147,7 @@ public:
 			}
 		}
 		
-		/*for(int i = 0; i<4; i++){
-			cout<<vet[i]<<" ";
-		}
-		cout<<endl;*/
-		
 		for(int i = 0; i<4; i++){
-			//cout<<vet[i]<<" ";
 			switch(vet[i]){
 			case 0:
 				if(r - 2 <= 0)
@@ -193,196 +201,6 @@ public:
 			}
 		}
 	}
-	
-	
-	void desenhar(){
-		//stack<pair<int, int> > s;
-		queue<pair<int, int> > q;
-		pair<int, int> atual;
-		pair<int, int> aux;
-		int count, count2, flag;
-		atual = ini;
-		while(!q.empty()){
-			q.push(atual);
-			visitados[atual.first][atual.second] = '-';
-			//if(atual == fim){
-			//	break;
-			//}
-			//visitados[atual.first][atual.second] = '-';
-			count = 0;
-			if(atual.first - 1 >= 0 and visitados[atual.first-1][atual.second] != '-')
-				count++;
-			//if(atual.first - 1 >= 0 and atual.second + 1 < coluna and visitados[atual.first-1][atual.second+1] != '-')
-			//	count++;
-			if(atual.second + 1 < coluna and visitados[atual.first][atual.second+1] != '-')
-				count++;
-			//if(atual.first + 1 < linha and atual.second + 1 < coluna and visitados[atual.first+1][atual.second+1] != '-')
-			//	count++;
-			if(atual.first + 1 < linha and visitados[atual.first+1][atual.second] != '-')
-				count++;
-			//if(atual.first + 1 < linha and atual.second - 1 >= 0 and visitados[atual.first+1][atual.second-1] != '-')
-			//	count++;
-			if(atual.second - 1 >= 0 and visitados[atual.first][atual.second-1] != '-')
-				count++;
-			//if(atual.first - 1 >= 0 and atual.second - 1 >= 0 and visitados[atual.first-1][atual.second-1] != '-')
-				//count++;
-			if(count>0){
-				
-				flag = 1;
-				while(flag){
-					switch(rand()%4){
-						case 0:
-							if(atual.first - 1 >= 0 and visitados[atual.first-1][atual.second] != '-'){
-								if(count>1){
-									q.push(atual);
-								}
-								lab[atual.first-1][atual.second] = '*';
-								visitados[atual.first-1][atual.second] = '-';
-								if(atual.first + 1 < linha)visitados[atual.first+1][atual.second] = '-';
-								if(atual.second -1 >= 0) visitados[atual.first][atual.second-1] = '-';
-								if(atual.second +1 < coluna) visitados[atual.first][atual.second+1] = '-';
-								atual.first--;
-								flag = 0;
-							}
-							break;
-						/*case 1:
-							if(atual.first - 1 >= 0 and atual.second + 1 < coluna and visitados[atual.first-1][atual.second+1] != '-'){
-								if(count>1){
-									s.push(atual);
-								}
-								lab[atual.first-1][atual.second+1] = '*';
-								visitados[atual.first-1][atual.second+1] = '-';
-								atual.first--;
-								atual.second++;
-								total--;
-								flag = 0;
-							}
-							break;*/
-						case 1:
-							if(atual.second + 1 < coluna and visitados[atual.first][atual.second+1] != '-'){
-								if(count>1){
-									q.push(atual);
-								}
-								lab[atual.first][atual.second+1] = '*';
-								
-								if(atual.first - 1 >= 0) visitados[atual.first-1][atual.second] = '-';
-								if(atual.first + 1 < linha)visitados[atual.first+1][atual.second] = '-';
-								if(atual.second -1 >= 0) visitados[atual.first][atual.second-1] = '-';
-								visitados[atual.first][atual.second+1] = '-';
-								atual.second++;
-						
-								flag = 0;
-							}
-							break;
-						/*case 3:
-							if(atual.first + 1 < linha and atual.second + 1 < coluna and visitados[atual.first+1][atual.second+1] != '-'){
-								if(count>1){
-									s.push(atual);
-								}
-								lab[atual.first+1][atual.second+1] = '*';
-								visitados[atual.first+1][atual.second+1] = '-';
-								atual.first++;
-								atual.second++;
-								total--;
-								flag = 0;
-							}
-							break;*/
-						case 2:
-							if(atual.first + 1 < linha and visitados[atual.first+1][atual.second] != '-'){
-								if(count>1){
-									q.push(atual);
-								}
-								lab[atual.first+1][atual.second] = '*';
-								
-								if(atual.first - 1 >= 0) visitados[atual.first-1][atual.second] = '-';
-								visitados[atual.first+1][atual.second] = '-';
-								if(atual.second -1 >= 0) visitados[atual.first][atual.second-1] = '-';
-								if(atual.second + 1 < coluna)visitados[atual.first][atual.second+1] = '-';
-								atual.first++;
-								//total-=4;
-								flag = 0;
-							}
-							break;
-						/*case 5:
-							if(atual.first + 1 < linha and atual.second - 1 >= 0 and visitados[atual.first+1][atual.second-1] != '-'){
-								if(count>1){
-									s.push(atual);
-								}
-								lab[atual.first+1][atual.second-1] = '*';
-								visitados[atual.first+1][atual.second-1] = '-';
-								atual.first++;
-								atual.second--;
-								total--;
-								flag = 0;
-							}
-							break;*/
-						case 3:
-							if(atual.second - 1 >= 0 and visitados[atual.first][atual.second-1] != '-'){
-								if(count>1){
-									q.push(atual);
-								}
-								lab[atual.first][atual.second-1] = '*';
-								
-								if(atual.first - 1 >= 0) visitados[atual.first-1][atual.second] = '-';
-								if(atual.first + 1 < linha)visitados[atual.first+1][atual.second] = '-';
-								visitados[atual.first][atual.second-1] = '-';
-								if(atual.second + 1 < coluna)visitados[atual.first][atual.second+1] = '-';
-								atual.second--;
-								//total-=4;
-								flag = 0;
-							}
-							break;
-						/*case 7:
-							if(atual.first - 1 >= 0 and atual.second - 1 >= 0 and visitados[atual.first-1][atual.second-1] != '-'){
-								if(count>1){
-									s.push(atual);
-								}
-								lab[atual.first-1][atual.second-1] = '*';
-								visitados[atual.first-1][atual.second-1] = '-';
-								atual.first--;
-								atual.second--;
-								total--;
-								flag = 0;
-							}
-							break;*/
-					}
-					
-				}
-			}
-			else {
-				//imprimirLab();
-				//imprimirVisitados();
-				while(!q.empty()){
-					aux = q.front();
-					count2 = 0;
-					if(aux.first - 1 >= 0 and visitados[aux.first-1][aux.second] != '-')
-						count2++;
-					//if(aux.first - 1 >= 0 and aux.second + 1 < coluna and visitados[aux.first-1][aux.second+1] != '-')
-					//	count2++;
-					if(aux.second + 1 < coluna and visitados[aux.first][aux.second+1] != '-')
-						count2++;
-					//if(aux.first + 1 < linha and aux.second + 1 < coluna and visitados[aux.first+1][aux.second+1] != '-')
-					//	count2++;
-					if(aux.first + 1 < linha and visitados[aux.first+1][aux.second] != '-')
-						count2++;
-					//if(aux.first + 1 < linha and aux.second - 1 >= 0 and visitados[aux.first+1][aux.second-1] != '-')
-					//	count2++;
-					if(aux.second - 1 >= 0 and visitados[aux.first][aux.second-1] != '-')
-						count2++;
-					//if(aux.first - 1 >= 0 and aux.second - 1 >= 0 and visitados[aux.first-1][aux.second-1] != '-')
-					//	count2++;
-					if(count2 > 0){
-						atual = aux;
-						break;
-					}
-					else{
-						//atual = s.top();
-						q.pop();
-					}
-				}
-			}
-		}
-	}
 };
 
 
@@ -394,12 +212,9 @@ int main(int argc, const char * argv[]) {
 	l.setColuna();
 	l.setTotal();
 	l.iniciarLab();
-	
 	l.randomizarPontos();
-	//l.pontos();
-	//l.desenhar();
 	l.desenharRecurcao(l.getIniFirst(), l.getIniSecond());
-	l.imprimirLab();
-	//l.imprimirVisitados();
+	//l.imprimirLab();
+	l.imprimirIn();
 	return 0;
 }
