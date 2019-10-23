@@ -8,6 +8,7 @@
 #include <vector>
 #include <math.h>
 #include <queue>
+#include <fstream>
 #include <time.h>
 
 using namespace std;
@@ -23,10 +24,27 @@ private:
 	float custo;
 	int flag;
 	int nvisitados;
+	ofstream dados;
 public:
 	char **lab;
 	char **visitados;
 	char **visual;
+	
+	void abrirArquivo(){
+		dados.open ("dados.csv", ios::app);
+	}
+	
+	void fecharArquivo(){
+		dados.close();
+	}
+	
+	void escreverArquivo(double n){
+		dados<<n<<",,";
+	}
+	
+	void enterArquivo(){
+		dados<<"\n";
+	}
 	
 	void setIni(int i, int j){
 		ini.first = i;
@@ -227,6 +245,7 @@ public:
 			}
 			cout<<"]"<<endl<<endl;
 			cout<<"- Custo = "<<custo<<endl;
+			dados<<custo<<","<<nvisitados<<",";
 			cout<<endl<<"- Casas visitadas = "<<nvisitados<<endl;
 		}
 		else{
@@ -411,6 +430,7 @@ public:
 		cout<<"]"<<endl<<endl;
 		cout<<"- Custo = "<<custo<<endl;
 		cout<<endl<<"- Casas visitadas = "<<nvisitados<<endl;
+		dados<<custo<<","<<nvisitados<<",";
 	}
 	
 	void bff(){
@@ -537,6 +557,7 @@ public:
 		cout<<"]"<<endl<<endl;
 		cout<<"- Custo = "<<custo<<endl;
 		cout<<endl<<"- Casas visitadas = "<<nvisitados<<endl;
+		dados<<custo<<","<<nvisitados<<",";
 	}
 	
 	
@@ -866,6 +887,7 @@ int main(int argc, const char * argv[]) {
 	clock_t depois;
 	double segundos;
 	Labirinto l;
+	l.abrirArquivo();
 	
 	l.iniciaLab();
 	l.setLab();
@@ -878,6 +900,7 @@ int main(int argc, const char * argv[]) {
 	depois = clock();
 	segundos = (double)(depois - antes)/CLOCKS_PER_SEC;
 	cout<<endl<<"- Tempo = "<<segundos<<" segundos"<<endl;
+	l.escreverArquivo(segundos);
 	cout<<endl<<"- Visulização do caminho:"<<endl;
 	l.visualizar();
 	l.deletarVisitados();
@@ -890,6 +913,7 @@ int main(int argc, const char * argv[]) {
 	depois = clock();
 	segundos = (double)(depois - antes)/CLOCKS_PER_SEC;
 	cout<<endl<<"- Tempo = "<<segundos<<" segundos"<<endl;
+	l.escreverArquivo(segundos);
 	cout<<endl<<"- Visulização do caminho:"<<endl;
 	l.visualizar();
 	l.deletarVisitados();
@@ -902,12 +926,14 @@ int main(int argc, const char * argv[]) {
 	depois = clock();
 	segundos = (double)(depois - antes)/CLOCKS_PER_SEC;
 	cout<<endl<<"- Tempo = "<<segundos<<" segundos"<<endl;
+	l.escreverArquivo(segundos);
+	l.enterArquivo();
 	cout<<endl<<"- Visulização do caminho:"<<endl;
 	l.visualizar();
 	l.deletarVisitados();
 	//l.bA();
 	
-	
+	l.fecharArquivo();
 	l.deletarLab();
 	return 0;
 }
